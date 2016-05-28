@@ -7,6 +7,7 @@ package jzllockscreen.jzl.com.jzllockscreen;
         import android.content.Context;
         import android.content.Intent;
         import android.os.Bundle;
+        import android.view.KeyEvent;
         import android.view.View;
 
 public class LockActivity extends Activity {
@@ -57,5 +58,17 @@ public class LockActivity extends Activity {
         intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "一键锁屏");
         startActivity(intent);
     }
-
+    // 屏蔽返回键功能
+    public boolean onKeyDown(int keyCode,KeyEvent event){
+        switch(keyCode){
+            case KeyEvent.KEYCODE_HOME:return true;
+            case KeyEvent.KEYCODE_BACK:return true;
+            case KeyEvent.KEYCODE_CALL:return true;
+            case KeyEvent.KEYCODE_SYM: return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN: return true;
+            case KeyEvent.KEYCODE_VOLUME_UP: return true;
+            case KeyEvent.KEYCODE_STAR: return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
