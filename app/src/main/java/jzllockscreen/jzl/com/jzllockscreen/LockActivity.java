@@ -9,6 +9,7 @@ package jzllockscreen.jzl.com.jzllockscreen;
         import android.os.Bundle;
         import android.view.KeyEvent;
         import android.view.View;
+        import android.view.Window;
         import android.view.WindowManager;
 
 public class LockActivity extends Activity {
@@ -23,6 +24,8 @@ public class LockActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置无标题
+        requestWindowFeature(Window.FEATURE_NO_TITLE);//设置全屏
         this.getWindow().setFlags(FLAG_HOMEKEY_DISPATCHED, FLAG_HOMEKEY_DISPATCHED);//关键代码(屏蔽HOME键)
         setContentView(R.layout.activity_main);
     }
@@ -62,7 +65,7 @@ public class LockActivity extends Activity {
         startActivity(intent);
     }
     // 屏蔽返回键功能
-    /*
+
     public boolean onKeyDown(int keyCode,KeyEvent event){
         switch(keyCode){
             case KeyEvent.KEYCODE_HOME:return true;
@@ -74,14 +77,6 @@ public class LockActivity extends Activity {
             case KeyEvent.KEYCODE_STAR: return true;
         }
         return super.onKeyDown(keyCode, event);
-    }*/
-
-    @Override
-    public boolean onKeyDown( int keyCode, KeyEvent event) {    // 屏蔽HOME键
-        // TODO Auto-generated method stub
-        if (keyCode == event. KEYCODE_HOME) {
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
     }
+
 }
